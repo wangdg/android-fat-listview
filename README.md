@@ -11,6 +11,5 @@ fat-listview是对ListView的扩展。主要实现下面的功能：
 代码并非原创，多数代码来自：
 
 * [MarkMjw](https://github.com/MarkMjw)的项目：[PullToRefresh](https://github.com/MarkMjw/PullToRefresh)
-* Unordered list item
-* Unordered list item 
+* [JimiSmith](https://github.com/JimiSmith)的项目：[PinnedHeaderListView](https://github.com/JimiSmith/PinnedHeaderListView)
 
