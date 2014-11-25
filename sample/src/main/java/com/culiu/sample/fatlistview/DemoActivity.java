@@ -3,6 +3,7 @@ package com.culiu.sample.fatlistview;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -11,12 +12,17 @@ import android.widget.TextView;
 import com.culiu.common.widget.PinnedHeaderListView;
 import com.culiu.common.widget.SectionedBaseAdapter;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class DemoActivity extends Activity {
 
     private String[] mSectionAStringArray;
     private String[] mSectionBStringArray;
     private String[] mSectionCStringArray;
     private String[] mSectionDStringArray;
+
+    private Handler mHandler;
 
     private SectionedBaseAdapter mListViewAdapter = new SectionedBaseAdapter() {
 
@@ -138,8 +144,36 @@ public class DemoActivity extends Activity {
         mSectionCStringArray = getResources().getStringArray(R.array.section_c_strings);
         mSectionDStringArray = getResources().getStringArray(R.array.section_d_strings);
 
-        PinnedHeaderListView listView = (PinnedHeaderListView)
+        mHandler = new Handler();
+
+        final PinnedHeaderListView listView = (PinnedHeaderListView)
                 this.findViewById(R.id.list_view);
         listView.setAdapter(mListViewAdapter);
+
+        listView.setPullRefreshEnable(true);
+        listView.setPullLoadEnable(true);
+
+        listView.setXListViewListener(new PinnedHeaderListView.IXListViewListener() {
+
+            @Override
+            public void onRefresh() {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.stopRefresh();
+                    }
+                }, 1000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.stopLoadMore();
+                    }
+                }, 1000);
+            }
+        });
     }
 }

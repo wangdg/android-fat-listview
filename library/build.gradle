@@ -4,7 +4,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion '20.0.0'
     defaultConfig {
-        applicationId 'com.culiu.common.view'
+        applicationId 'com.culiu.common.widget.fatlistview'
         minSdkVersion 8
         targetSdkVersion 19
         versionCode 1
