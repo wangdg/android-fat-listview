@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.culiu.common.widget.fatlistview.R;
 
-public class XFooterView extends LinearLayout {
+public class FatListFooterView extends LinearLayout {
     public final static int STATE_NORMAL = 0;
     public final static int STATE_READY = 1;
     public final static int STATE_LOADING = 2;
@@ -30,12 +30,12 @@ public class XFooterView extends LinearLayout {
 
     private int mState = STATE_NORMAL;
 
-    public XFooterView(Context context) {
+    public FatListFooterView(Context context) {
         super(context);
         initView(context);
     }
 
-    public XFooterView(Context context, AttributeSet attrs) {
+    public FatListFooterView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
@@ -92,14 +92,14 @@ public class XFooterView extends LinearLayout {
 //                if (mState == STATE_LOADING) {
 //                    mHintImage.clearAnimation();
 //                }
-                mHintView.setText(R.string.footer_hint_load_normal);
+                mHintView.setText(R.string.fat_list_view_footer_hint_load_normal);
                 break;
 
             case STATE_READY:
                 if (mState != STATE_READY) {
 //                    mHintImage.clearAnimation();
 //                    mHintImage.startAnimation(mRotateUpAnim);
-                    mHintView.setText(R.string.footer_hint_load_ready);
+                    mHintView.setText(R.string.fat_list_view_footer_hint_load_ready);
                 }
                 break;
 

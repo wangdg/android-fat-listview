@@ -9,11 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.TextView;
 
-import com.culiu.common.widget.PinnedHeaderListView;
-import com.culiu.common.widget.SectionedBaseAdapter;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import com.culiu.common.widget.FatListView;
+import com.culiu.common.widget.FatListViewAdapter;
 
 public class DemoActivity extends Activity {
 
@@ -24,7 +21,7 @@ public class DemoActivity extends Activity {
 
     private Handler mHandler;
 
-    private SectionedBaseAdapter mListViewAdapter = new SectionedBaseAdapter() {
+    private FatListViewAdapter mListViewAdapter = new FatListViewAdapter() {
 
         @Override
         public Object getItem(int section, int position) {
@@ -146,14 +143,14 @@ public class DemoActivity extends Activity {
 
         mHandler = new Handler();
 
-        final PinnedHeaderListView listView = (PinnedHeaderListView)
+        final FatListView listView = (FatListView)
                 this.findViewById(R.id.list_view);
         listView.setAdapter(mListViewAdapter);
 
         listView.setPullRefreshEnable(true);
         listView.setPullLoadEnable(true);
 
-        listView.setXListViewListener(new PinnedHeaderListView.IXListViewListener() {
+        listView.setPullListViewListener(new FatListView.IPullListViewListener() {
 
             @Override
             public void onRefresh() {

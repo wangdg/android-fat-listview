@@ -16,7 +16,7 @@ import android.widget.AbsListView.OnScrollListener;
 
 import com.culiu.common.widget.fatlistview.R;
 
-public class PinnedHeaderListView extends ListView implements OnScrollListener {
+public class FatListView extends ListView implements OnScrollListener {
 
     private OnScrollListener mOnScrollListener;
 
@@ -33,7 +33,7 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
      *
      * @author markmjw
      */
-    public interface IXListViewListener {
+    public interface IPullListViewListener {
         public void onRefresh();
         public void onLoadMore();
     }
@@ -80,16 +80,16 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     private int mScrollBack;
 
     // the interface to trigger refresh and load more.
-    private IXListViewListener mListener;
+    private IPullListViewListener mListener;
 
-    private XHeaderView mHeader;
+    private FatListHeaderView mHeader;
     // header view content, use it to calculate the Header's height. And hide it when disable pull refresh.
     private RelativeLayout mHeaderContent;
     private TextView mHeaderTime;
     private int mHeaderHeight;
 
     private LinearLayout mFooterLayout;
-    private XFooterView mFooterView;
+    private FatListFooterView mFooterView;
     private boolean mIsFooterReady = false;
 
     private boolean mEnablePullRefresh = true;
@@ -105,17 +105,17 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     // XListView 使用的变量 End
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public PinnedHeaderListView(Context context) {
+    public FatListView(Context context) {
         super(context);
         this.init(context);
     }
 
-    public PinnedHeaderListView(Context context, AttributeSet attrs) {
+    public FatListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.init(context);
     }
 
-    public PinnedHeaderListView(Context context, AttributeSet attrs, int defStyle) {
+    public FatListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.init(context);
     }
@@ -125,13 +125,13 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
         super.setOnScrollListener(this);
 
         // init header view
-        mHeader = new XHeaderView(context);
+        mHeader = new FatListHeaderView(context);
         mHeaderContent = (RelativeLayout) mHeader.findViewById(R.id.header_content);
         mHeaderTime = (TextView) mHeader.findViewById(R.id.header_hint_time);
         addHeaderView(mHeader);
 
         // init footer view
-        mFooterView = new XFooterView(context);
+        mFooterView = new FatListFooterView(context);
         mFooterLayout = new LinearLayout(context);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout
                 .LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -304,12 +304,12 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     public static abstract class OnItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int rawPosition, long id) {
-            SectionedBaseAdapter adapter;
+            FatListViewAdapter adapter;
             if (adapterView.getAdapter().getClass().equals(HeaderViewListAdapter.class)) {
                 HeaderViewListAdapter wrapperAdapter = (HeaderViewListAdapter) adapterView.getAdapter();
-                adapter = (SectionedBaseAdapter) wrapperAdapter.getWrappedAdapter();
+                adapter = (FatListViewAdapter) wrapperAdapter.getWrappedAdapter();
             } else {
-                adapter = (SectionedBaseAdapter) adapterView.getAdapter();
+                adapter = (FatListViewAdapter) adapterView.getAdapter();
             }
             int section = adapter.getSectionForPosition(rawPosition);
             int position = adapter.getPositionInSectionForPosition(rawPosition);
@@ -360,7 +360,7 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
             mPullLoading = false;
             mFooterView.setPadding(0, 0, 0, 0);
             mFooterView.show();
-            mFooterView.setState(XFooterView.STATE_NORMAL);
+            mFooterView.setState(FatListFooterView.STATE_NORMAL);
             // both "pull up" and "click" will invoke load more.
             mFooterView.setOnClickListener(new OnClickListener() {
                 @Override
@@ -396,7 +396,7 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     public void stopLoadMore() {
         if (mPullLoading) {
             mPullLoading = false;
-            mFooterView.setState(XFooterView.STATE_NORMAL);
+            mFooterView.setState(FatListFooterView.STATE_NORMAL);
         }
     }
 
@@ -414,7 +414,7 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
      *
      * @param listener
      */
-    public void setXListViewListener(IXListViewListener listener) {
+    public void setPullListViewListener(IPullListViewListener listener) {
         mListener = listener;
     }
 
@@ -427,14 +427,14 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
         if (mEnablePullRefresh && !mPullRefreshing) {
             // update the arrow image not refreshing
             if (mHeader.getVisibleHeight() > mHeaderHeight) {
-                mHeader.setState(XHeaderView.STATE_READY);
+                mHeader.setState(FatListHeaderView.STATE_READY);
             } else {
-                mHeader.setState(XHeaderView.STATE_NORMAL);
+                mHeader.setState(FatListHeaderView.STATE_NORMAL);
             }
         }
 
         mPullRefreshing = true;
-        mHeader.setState(XHeaderView.STATE_REFRESHING);
+        mHeader.setState(FatListHeaderView.STATE_REFRESHING);
         refresh();
     }
 
@@ -451,9 +451,9 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
         if (mEnablePullRefresh && !mPullRefreshing) {
             // update the arrow image unrefreshing
             if (mHeader.getVisibleHeight() > mHeaderHeight) {
-                mHeader.setState(XHeaderView.STATE_READY);
+                mHeader.setState(FatListHeaderView.STATE_READY);
             } else {
-                mHeader.setState(XHeaderView.STATE_NORMAL);
+                mHeader.setState(FatListHeaderView.STATE_NORMAL);
             }
         }
 
@@ -488,9 +488,9 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
         if (mEnablePullLoad && !mPullLoading) {
             if (height > PULL_LOAD_MORE_DELTA) {
                 // height enough to invoke load more.
-                mFooterView.setState(XFooterView.STATE_READY);
+                mFooterView.setState(FatListFooterView.STATE_READY);
             } else {
-                mFooterView.setState(XFooterView.STATE_NORMAL);
+                mFooterView.setState(FatListFooterView.STATE_NORMAL);
             }
         }
 
@@ -512,7 +512,7 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
 
     private void startLoadMore() {
         mPullLoading = true;
-        mFooterView.setState(XFooterView.STATE_LOADING);
+        mFooterView.setState(FatListFooterView.STATE_LOADING);
         loadMore();
     }
 
@@ -551,7 +551,7 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
                     // invoke refresh
                     if (mEnablePullRefresh && mHeader.getVisibleHeight() > mHeaderHeight) {
                         mPullRefreshing = true;
-                        mHeader.setState(XHeaderView.STATE_REFRESHING);
+                        mHeader.setState(FatListHeaderView.STATE_REFRESHING);
                         refresh();
                     }
 

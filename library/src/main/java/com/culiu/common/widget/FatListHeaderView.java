@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.culiu.common.widget.fatlistview.R;
 
-public class XHeaderView extends LinearLayout {
+public class FatListHeaderView extends LinearLayout {
     public final static int STATE_NORMAL = 0;
     public final static int STATE_READY = 1;
     public final static int STATE_REFRESHING = 2;
@@ -36,12 +36,12 @@ public class XHeaderView extends LinearLayout {
 
     private boolean mIsFirst;
 
-    public XHeaderView(Context context) {
+    public FatListHeaderView(Context context) {
         super(context);
         initView(context);
     }
 
-    public XHeaderView(Context context, AttributeSet attrs) {
+    public FatListHeaderView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
@@ -95,19 +95,19 @@ public class XHeaderView extends LinearLayout {
                     mArrowImageView.clearAnimation();
                 }
 
-                mHintTextView.setText(R.string.header_hint_refresh_normal);
+                mHintTextView.setText(R.string.fat_list_view_header_hint_refresh_normal);
                 break;
 
             case STATE_READY:
                 if (mState != STATE_READY) {
                     mArrowImageView.clearAnimation();
                     mArrowImageView.startAnimation(mRotateUpAnim);
-                    mHintTextView.setText(R.string.header_hint_refresh_ready);
+                    mHintTextView.setText(R.string.fat_list_view_header_hint_refresh_ready);
                 }
                 break;
 
             case STATE_REFRESHING:
-                mHintTextView.setText(R.string.header_hint_refresh_loading);
+                mHintTextView.setText(R.string.fat_list_view_header_hint_refresh_loading);
                 break;
 
             default:

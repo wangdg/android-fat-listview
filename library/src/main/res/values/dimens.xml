@@ -1,5 +1,5 @@
 <resources>
-    <dimen name="header_height">60dp</dimen>
-    <dimen name="footer_height">90dp</dimen>
-    <dimen name="footer_padding">10dp</dimen>
+    <dimen name="fat_list_view_header_height">60dp</dimen>
+    <dimen name="fat_list_view_footer_height">90dp</dimen>
+    <dimen name="fat_list_view_footer_padding">10dp</dimen>
 </resources>

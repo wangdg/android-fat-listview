@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 
-public abstract class SectionedBaseAdapter extends BaseAdapter implements PinnedHeaderListView.PinnedSectionedHeaderAdapter {
+public abstract class FatListViewAdapter extends BaseAdapter implements FatListView.PinnedSectionedHeaderAdapter {
 
     private static int HEADER_VIEW_TYPE = 0;
     private static int ITEM_VIEW_TYPE = 0;
@@ -33,7 +33,7 @@ public abstract class SectionedBaseAdapter extends BaseAdapter implements Pinned
      */
     private int mSectionCount;
 
-    public SectionedBaseAdapter() {
+    public FatListViewAdapter() {
         super();
         mSectionCache = new SparseArray<Integer>();
         mSectionPositionCache = new SparseArray<Integer>();

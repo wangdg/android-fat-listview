@@ -13,3 +13,5 @@ fat-listview是对ListView的扩展。主要实现下面的功能：
 * [MarkMjw](https://github.com/MarkMjw)的项目：[PullToRefresh](https://github.com/MarkMjw/PullToRefresh)
 * [JimiSmith](https://github.com/JimiSmith)的项目：[PinnedHeaderListView](https://github.com/JimiSmith/PinnedHeaderListView)
 
+开发工具：Android Studio
+

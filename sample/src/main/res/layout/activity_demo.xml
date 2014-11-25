@@ -12,7 +12,7 @@
     <view
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.culiu.common.widget.PinnedHeaderListView"
+        class="com.culiu.common.widget.FatListView"
         android:id="@+id/list_view"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
