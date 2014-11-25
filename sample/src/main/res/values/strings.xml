@@ -5,4 +5,60 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="section_a_strings">
+        <item>Apply</item>
+        <item>Assign</item>
+        <item>Appearance</item>
+        <item>Adequate</item>
+        <item>Abandon</item>
+        <item>Abroad</item>
+        <item>Abundant</item>
+        <item>Academy</item>
+        <item>Accident</item>
+    </string-array>
+
+    <string-array name="section_b_strings">
+        <item>Bear</item>
+        <item>Bill</item>
+        <item>Blue</item>
+        <item>Bible</item>
+        <item>British</item>
+        <item>Black</item>
+        <item>Blessed</item>
+        <item>Bachelor</item>
+        <item>Bulletin</item>
+    </string-array>
+
+    <string-array name="section_c_strings">
+        <item>Cat</item>
+        <item>Category</item>
+        <item>Choose</item>
+        <item>Chinese</item>
+        <item>Cackle</item>
+        <item>Cacophonous</item>
+        <item>Cacophony</item>
+        <item>Cacti</item>
+        <item>Cadence</item>
+        <item>Cairo</item>
+    </string-array>
+
+    <string-array name="section_d_strings">
+        <item>Dab</item>
+        <item>Dabble</item>
+        <item>Dace</item>
+        <item>Dacron</item>
+        <item>Dad</item>
+        <item>Daddy</item>
+        <item>Daffodil</item>
+        <item>Daft</item>
+        <item>Dagger</item>
+        <item>Daguerreotype</item>
+        <item>Dahlia</item>
+        <item>Daily</item>
+        <item>Dairy</item>
+        <item>Dakota</item>
+        <item>Dallas</item>
+        <item>Damage</item>
+    </string-array>
+
 </resources>
