@@ -41,7 +41,7 @@ public class FatListFooterView extends LinearLayout {
     }
 
     private void initView(Context context) {
-        mLayout = LayoutInflater.from(context).inflate(R.layout.vw_footer, null);
+        mLayout = LayoutInflater.from(context).inflate(R.layout.fat_list_view_footer, null);
         mLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT));
         addView(mLayout);

@@ -49,7 +49,7 @@ public class FatListHeaderView extends LinearLayout {
     private void initView(Context context) {
         // Initial set header view height 0
         LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, 0);
-        mContainer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.vw_header, null);
+        mContainer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.fat_list_view_header, null);
         addView(mContainer, lp);
         setGravity(Gravity.BOTTOM);
 

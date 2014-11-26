@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/fat_list_view_footer_hint_load_normal"
-            android:textColor="@color/title_color" />
+            android:textColor="#333333" />
 
         <ImageView
             android:id="@+id/footer_arrow"
